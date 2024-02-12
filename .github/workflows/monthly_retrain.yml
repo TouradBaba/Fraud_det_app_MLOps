@@ -3,16 +3,12 @@ name: Monthly Retrain
 on:
   schedule:
     - cron: '0 0 1 * *'  # Run on the first day of every month
-  workflow_run:
-    workflows: ["Data Drift Detection"]
-    types:
-      - completed
   workflow_dispatch:
 
 jobs:
   monthly_retrain:
     runs-on: ubuntu-latest
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_run' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
 
     steps:
     - name: Checkout Repository
@@ -27,24 +23,7 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-    - name: Retrieve Last Training Timestamp
-      id: get_last_timestamp
-      run: echo "::set-output name=timestamp::$(date +'%Y-%m-%d %H:%M:%S')"
-
-    - name: Calculate Time Difference
-      id: time_diff
-      run: echo "::set-output name=diff::$(($(date -u -d "${{ github.event.head_commit.timestamp }} UTC" +%s) - $(date -u -d "${{ needs.mlops_workflow.outputs.timestamp }} UTC" +%s)))"
-
-    - name: Check if Retraining is Needed
-      id: check_retraining
-      run: |
-        if [ "${{ steps.time_diff.outputs.diff }}" -ge 2592000 ]; then  # 2592000 seconds = 30 days
-          echo "Retraining is needed."
-        else
-          echo "No retraining needed."
-          exit 0  # Skip the job if retraining is not needed
-        fi
-
     - name: Retrain Model
-      if: steps.check_retraining.outcome == 'success'
       run: python train.py
+
+
