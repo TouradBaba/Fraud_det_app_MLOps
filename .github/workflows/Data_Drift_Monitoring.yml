@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'data/datadrift_simulation.csv'
   workflow_dispatch:
 
 jobs:
