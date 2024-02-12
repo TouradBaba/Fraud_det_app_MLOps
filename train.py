@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, r
 import pickle
 
 
-url = 'https://media.githubusercontent.com/media/TouradBaba/Fraud_det_model_MLOps0/main/creditcard_2023.csv?token=BD5G5FN7F6KTW4LAAEZ527TFZI4OQ'
+url = 'https://media.githubusercontent.com/media/TouradBaba/Fraud_det_model_MLOps/main/creditcard_2023.csv'
 
 
 def load_data():

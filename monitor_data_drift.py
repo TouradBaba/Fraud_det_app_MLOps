@@ -1,7 +1,7 @@
 from train import *
 
-url = 'https://raw.githubusercontent.com/TouradBaba/Fraud_det_model_MLOps/main/data/training_data.csv'
-url2= 'https://raw.githubusercontent.com/TouradBaba/Fraud_det_model_MLOps/main/data/datadrift_simulation.csv'
+url0 = 'https://raw.githubusercontent.com/TouradBaba/Fraud_det_model_MLOps/main/data/training_data.csv'
+url1 = 'https://raw.githubusercontent.com/TouradBaba/Fraud_det_model_MLOps/main/data/datadrift_simulation.csv'
 
 # Importing the data
 df = pd.read_csv(url)
@@ -23,8 +23,8 @@ def calculate_drift(baseline, current):
 
 def main():
 
-    baseline_data = pd.read_csv(url)
-    current_data = pd.read_csv(url2)
+    baseline_data = pd.read_csv(url0)
+    current_data = pd.read_csv(url1)
 
     # Set a threshold for data drift
     drift_threshold = 2.0
