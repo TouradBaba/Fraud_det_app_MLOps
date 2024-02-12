@@ -41,7 +41,7 @@ jobs:
           mv training_data.csv $GITHUB_WORKSPACE/data/training_data.csv
 
       - name: Simulate Monthly Data Changes
-        run: python SimulateMonthlyChanges.py
+        run: python SimulateDataChanges.py
 
       - name: Save Data Drift Simulation CSV
         run: |
