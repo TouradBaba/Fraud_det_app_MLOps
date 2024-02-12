@@ -36,8 +36,5 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
         git add --all
-        git commit -m "Update model and data drift simulation"
+        git commit -m "Update model after Retraining"
         git push origin main
-
-
-
