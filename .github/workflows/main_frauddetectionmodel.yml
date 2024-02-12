@@ -6,9 +6,12 @@ name: Build and deploy Python app to Azure Web App - FraudDetectionModel
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
       - 'app/**'
+      - 'requirements.txt'
+      - 'startup.txt'
   workflow_dispatch:
 
 jobs:
