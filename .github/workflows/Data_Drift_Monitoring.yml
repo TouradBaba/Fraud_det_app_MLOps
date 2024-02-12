@@ -39,6 +39,7 @@ jobs:
       - name: Save The data used in training
         run: |
           mv training_data.csv $GITHUB_WORKSPACE/data/training_data.csv
+          rm training_data.csv $GITHUB_WORKSPACE/training_data.csv
 
       - name: Simulate Monthly Data Changes
         run: python SimulateDataChanges.py
