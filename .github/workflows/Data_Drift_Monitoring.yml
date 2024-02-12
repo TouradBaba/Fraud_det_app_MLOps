@@ -36,7 +36,7 @@ jobs:
 
       - name: Save Model
         run: |
-          mv fraud_detection_model.sav $GITHUB_WORKSPACE/app/new_fraud_detection_model.sav
+          mv fraud_detection_model.sav $GITHUB_WORKSPACE/app/fraud_detection_model.sav
 
       - name: Save The data used in training
         run: |
