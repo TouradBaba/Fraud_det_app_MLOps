@@ -1,0 +1,74 @@
+name: Data Drift Detection
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  data_drift_monitoring:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git pull origin main --rebase
+
+      - name: train.py
+        run: python train.py
+
+      - name: Save Model
+        run: |
+          mv fraud_detection_model.sav $GITHUB_WORKSPACE/app/fraud_detection_model.sav
+
+      - name: Save The data used in training
+        run: |
+          mv training_data.csv $GITHUB_WORKSPACE/data/training_data.csv
+
+      - name: Simulate Monthly Data Changes
+        run: python SimulateMonthlyChanges.py
+
+      - name: Save Data Drift Simulation CSV
+        run: |
+          mv datadrift_simulation.csv $GITHUB_WORKSPACE/data/datadrift_simulation.csv
+          
+      - name: Commit and Push Changes
+        id: commit_push0
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          git commit -m "Update model and data drift simulation"
+          git push origin main
+        
+      - name: Check Data Drift and Retrain
+        id: data_drift
+        run: python monitor_data_drift.py
+
+      - name: Save Model In case of data drift
+        run: |
+          mv fraud_detection_model.sav $GITHUB_WORKSPACE/app/fraud_detection_model.sav
+
+      - name: Commit and Push Changes
+        id: commit_push1
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          git commit -m "Update model and data drift simulation"
+          git push origin main
