@@ -1,0 +1,40 @@
+name: Monthly Retrain
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # Run on the first day of every month
+  workflow_dispatch:
+
+jobs:
+  monthly_retrain:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11
+
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Retrain Model
+      run: python train.py
+      
+    - name: Save Model After Retraining
+      run: |
+        mv fraud_detection_model.sav $GITHUB_WORKSPACE/app/fraud_detection_model.sav
+      
+    - name: Commit and Push Changes
+      id: commit_push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
+        git add --all
+        git commit -m "Update model after Retraining"
+        git push origin main
