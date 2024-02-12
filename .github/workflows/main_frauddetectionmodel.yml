@@ -10,8 +10,6 @@ on:
       - main
     paths:
     - 'app/**'
-    - 'requirements.txt'
-    - 'startup.txt'
   workflow_dispatch:
 
 jobs:
