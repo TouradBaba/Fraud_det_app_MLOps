@@ -8,6 +8,10 @@ on:
   push:
     branches:
       - main
+    paths:
+    - 'app/**'
+    - 'requirements.txt'
+    - 'startup.txt'
   workflow_dispatch:
 
 jobs:
@@ -57,6 +61,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: python-app
+          path: .
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
