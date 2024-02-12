@@ -10,6 +10,7 @@ df = pd.read_csv(url)
 def calculate_drift(baseline, current):
     # Select features
     baseline_selected = baseline.drop(baseline.columns[-1], axis=1)
+    baseline_selected = baseline_selected.drop(baseline.columns[0])
     current_selected = current
 
     baseline_mean = baseline_selected.mean()
