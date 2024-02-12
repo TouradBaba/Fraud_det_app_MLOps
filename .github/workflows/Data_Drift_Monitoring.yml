@@ -54,7 +54,7 @@ jobs:
           git config --local user.name "github-actions"
           git add --all
           git commit -m "Update model and data drift simulation"
-          git push origin main
+          git push https://${{ secrets.PAT }}@github.com/TouradBaba/Fraud_det_model_MLOps.git main
         
       - name: Check Data Drift and Retrain
         id: data_drift
@@ -71,4 +71,4 @@ jobs:
           git config --local user.name "github-actions"
           git add --all
           git commit -m "Update model and data drift simulation"
-          git push origin main
+          git push https://${{ secrets.PAT }}@github.com/TouradBaba/Fraud_det_model_MLOps.git main
