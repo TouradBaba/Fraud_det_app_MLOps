@@ -48,16 +48,6 @@ jobs:
       - name: Save Data Drift Simulation CSV
         run: |
           mv datadrift_simulation.csv $GITHUB_WORKSPACE/data/datadrift_simulation.csv
-          
-      - name: Commit and Push Changes
-        id: commit0
-        run: |
-          git add --all
-          git commit -m "Update model and data drift simulation"
-      - name: Push0
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PAT}}
         
       - name: Check Data Drift and Retrain
         id: data_drift
@@ -67,13 +57,13 @@ jobs:
         run: |
           mv fraud_detection_model.sav $GITHUB_WORKSPACE/app/fraud_detection_model.sav
 
-      - name: Commit and Push Changes
-        id: commit1
+      - name: Commit Changes
+        id: commit
         run: |
           git add --all
           git commit -m "Update model and data drift simulation"
           
-      - name: Push1
+      - name: Push
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT}}
