@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'data/datadrift_simulation.csv'
+      - 'monitor_data_drift.py'
   workflow_dispatch:
 
 jobs:
