@@ -26,6 +26,10 @@ jobs:
     - name: Retrain Model
       run: python train.py
       
+    - name: Save Model After Retraining
+      run: |
+        mv fraud_detection_model.sav $GITHUB_WORKSPACE/app/fraud_detection_model.sav
+      
     - name: Commit and Push Changes
       id: commit_push
       run: |
