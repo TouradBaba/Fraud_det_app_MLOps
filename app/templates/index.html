@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        form {
+            max-width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Fraud Detection App</h1>
+
+        <!-- Form for entering data manually -->
+        <form id="fraudForm" action="/predict" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="time">Time:</label>
+                    <input type="text" class="form-control" name="time" required>
+                </div>
+
+                <!-- Repeat the following block for each feature from V1 to V28 -->
+                {% for i in range(1, 29) %}
+                    <div class="form-group col-md-4">
+                        <label for="v{{ i }}">V{{ i }}:</label>
+                        <input type="text" class="form-control" name="v{{ i }}" required>
+                    </div>
+                {% endfor %}
+
+                <div class="form-group col-md-4">
+                    <label for="amount">Amount:</label>
+                    <input type="text" class="form-control" name="amount" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        <!-- Form for uploading a file -->
+        <form id="fileForm" action="/predict-file" method="post" enctype="multipart/form-data" class="mt-4">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="file">Upload File:</label>
+                    <input type="file" class="form-control-file" name="file" accept=".csv, .xlsx" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict using File</button>
+        </form>
+
+        {% if prediction %}
+            <div class="mt-4 alert alert-success" role="alert">
+                Prediction: {{ prediction }}
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="mt-4 alert alert-danger" role="alert">
+                Error: {{ error }}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
