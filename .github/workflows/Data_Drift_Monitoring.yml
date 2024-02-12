@@ -52,8 +52,6 @@ jobs:
       - name: Commit and Push Changes
         id: commit_push0
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
           git add --all
           git commit -m "Update model and data drift simulation"
           git push https://${{ secrets.PAT }}@github.com/TouradBaba/Fraud_det_model_MLOps.git main
@@ -69,8 +67,6 @@ jobs:
       - name: Commit and Push Changes
         id: commit_push1
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
           git add --all
           git commit -m "Update model and data drift simulation"
           git push https://${{ secrets.PAT }}@github.com/TouradBaba/Fraud_det_model_MLOps.git main
