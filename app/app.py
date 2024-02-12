@@ -15,7 +15,7 @@ auth = HTTPBasicAuth()
 model = pickle.load(open('fraud_detection_model.sav', 'rb'))
 
 # Set MLflow tracking URI
-mlflow_tracking_uri = os.environ.get("MLFLOW_TRACKING_URI")
+mlflow_tracking_uri = 'frauddetectionmodel.azurewebsites.net'
 mlflow.set_tracking_uri(mlflow_tracking_uri)
 
 # Define experiment name
