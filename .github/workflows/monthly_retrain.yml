@@ -25,5 +25,15 @@ jobs:
 
     - name: Retrain Model
       run: python train.py
+      
+    - name: Commit and Push Changes
+      id: commit_push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
+        git add --all
+        git commit -m "Update model and data drift simulation"
+        git push origin main
+
 
 
