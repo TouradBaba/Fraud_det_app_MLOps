@@ -50,11 +50,14 @@ jobs:
           mv datadrift_simulation.csv $GITHUB_WORKSPACE/data/datadrift_simulation.csv
           
       - name: Commit and Push Changes
-        id: commit_push0
+        id: commit0
         run: |
           git add --all
           git commit -m "Update model and data drift simulation"
-          git push https://${{ secrets.PAT }}@github.com/TouradBaba/Fraud_det_model_MLOps.git main
+      - name: Push0
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT}}
         
       - name: Check Data Drift and Retrain
         id: data_drift
@@ -65,8 +68,12 @@ jobs:
           mv fraud_detection_model.sav $GITHUB_WORKSPACE/app/fraud_detection_model.sav
 
       - name: Commit and Push Changes
-        id: commit_push1
+        id: commit1
         run: |
           git add --all
           git commit -m "Update model and data drift simulation"
-          git push https://${{ secrets.PAT }}@github.com/TouradBaba/Fraud_det_model_MLOps.git main
+          
+      - name: Push1
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT}}
