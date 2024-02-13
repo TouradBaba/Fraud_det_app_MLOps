@@ -58,7 +58,22 @@ jobs:
           mv fraud_detection_model.sav $GITHUB_WORKSPACE/app/fraud_detection_model.sav
 
       - name: Commit Changes
-        id: commit
+        id: commit0
+        run: |
+          git add --all
+          git commit -m "Update model and data drift simulation"
+          
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT}}
+
+      - name: Save The data used in training
+        run: |
+          mv training_data.csv $GITHUB_WORKSPACE/data/training_data.csv
+
+      - name: Commit Changes
+        id: commit1
         run: |
           git add --all
           git commit -m "Update model and data drift simulation"
