@@ -68,15 +68,15 @@ jobs:
         with:
           github_token: ${{ secrets.PAT}}
 
-      - name: Save The data used in training
+      - name: Remove training data from repo root
         run: |
-          mv training_data.csv $GITHUB_WORKSPACE/data/training_data.csv
+          rm training_data.csv $GITHUB_WORKSPACE/training_data.csv
 
       - name: Commit Changes
         id: commit1
         run: |
           git add --all
-          git commit -m "Update model and data drift simulation"
+          git commit -m "Remove training data from repo root"
           
       - name: Push
         uses: ad-m/github-push-action@master
