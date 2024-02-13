@@ -70,8 +70,8 @@ jobs:
 
       - name: Remove training data from repo root
         run: |
-          rm training_data.csv $GITHUB_WORKSPACE/training_data.csv
-
+          rm training_data.csv
+          
       - name: Commit Changes
         id: commit1
         run: |
