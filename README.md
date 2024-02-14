@@ -15,7 +15,6 @@ Welcome to this Fraud Detection App! This application is designed to predict pot
 ## Prerequisites
 
 - Python 3.11
-- Pip
 - Virtualenv (optional but recommended)
 
 ## Installation
