@@ -1,6 +1,26 @@
 # Fraud Detection App - User Guide
 
-Welcome to this Fraud Detection App! This application is designed to predict potentially fraudulent activities in financial transactions using machine learning. Access the app through the following URL: [https://frauddetectionmodel.azurewebsites.net](https://frauddetectionmodel.azurewebsites.net). Follow this guide to set up and use the app effectively, whether you are accessing it on the cloud or locally.
+Welcome to this Fraud Detection App! This application utilizes machine learning to predict potentially fraudulent activities in financial transactions. Whether you're accessing the app on the cloud or locally, follow this guide to seamlessly set up and make the most of its capabilities.
+
+**Key Features:**
+
+- **Predictive Power:** Leverage the app's machine learning algorithms to identify potential fraudulent activities in financial transactions.
+
+- **Cloud Accessibility:** Access the app effortlessly through the cloud using the URL: [https://frauddetectionmodel.azurewebsites.net](https://frauddetectionmodel.azurewebsites.net).
+
+- **Local Deployment:** If preferred, set up and use the app locally by following the installation and usage instructions provided in this guide.
+
+**Enhancements and Continuous Improvement:**
+
+- **CI/CD Integration:** Benefit from a robust Continuous Integration/Continuous Deployment (CI/CD) pipeline that ensures the app is always up-to-date with the latest enhancements and improvements.
+
+- **Workflow for Data Drift Monitoring:** Experience a seamless workflow for monitoring data drift, which triggers model retraining and deployment in response to changes in the dataset, ensuring the app's accuracy over time.
+
+- **Monthly Retraining:** The app undergoes monthly retraining, enhancing its predictive capabilities.
+
+- **Cloud Deployment:** The app is efficiently deployed on the cloud, allowing for scalability, reliability, and continuous accessibility.
+
+Follow the comprehensive guide below to navigate through the setup process and unleash the potential of this Fraud Detection App.
 
 ## Table of Contents
 
