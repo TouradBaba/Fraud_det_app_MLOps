@@ -4,7 +4,6 @@ import pandas as pd
 from io import BytesIO
 import pickle
 import mlflow
-import mlflow.sklearn
 import os
 import time
 
