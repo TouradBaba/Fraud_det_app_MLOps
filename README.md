@@ -1,6 +1,6 @@
 # Fraud Detection App
 
-Welcome to this Fraud Detection App! This application utilizes machine learning to predict potentially fraudulent activities in financial transactions. Whether you're accessing the app on the cloud or locally, Follow the guide below to navigate through the setup proces.
+This repository contains a Fraud Detection App, This application utilizes machine learning to predict potentially fraudulent activities in financial transactions. Whether you're accessing the app on the cloud or locally, Follow the guide below to navigate through the setup proces.
 
 **Key Features:**
 
