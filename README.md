@@ -127,6 +127,4 @@ To make predictions using a CSV file, upload a CSV file containing transaction d
   - "Transaction Appears Normal"
 
 
-## Disclaimer
 
-The machine learning model used in this application is trained on specific features from a particular dataset. Therefore, it is not suitable for detecting fraud in other systems that utilize different features.
